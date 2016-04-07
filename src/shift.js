@@ -1,5 +1,13 @@
 export default class Shift {
-  static days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  static days = [
+    'Saturday',
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday'
+  ];
 
   constructor(date, day, startTime, endTime) {
     const daysToAdd = Shift.days.indexOf(day);

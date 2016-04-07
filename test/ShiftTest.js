@@ -1,5 +1,5 @@
 import assert from "assert";
-import Shift from "../mypage-to-ics/shift";
+import Shift from "../src/shift";
 
 describe("Shift", function() {
   it("should return correct start and end Date objects", function() {
