@@ -22,6 +22,8 @@ export default class Shift {
 
     this.start = start;
     this.end = end;
+    this.startTimeRaw = startTime;
+    this.endTimeRaw = endTime;
   }
 
   static _timeFormatter(time) {

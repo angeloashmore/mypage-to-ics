@@ -1,3 +1,4 @@
+import ICS from 'ics-js';
 import {ALARM} from 'constants';
 
 const buildAlarm = (trigger) => {

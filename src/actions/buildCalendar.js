@@ -1,11 +1,11 @@
-import {VCALENDAR} from 'ics-js';
+import ICS from 'ics-js';
 import {CALENDAR} from 'constants';
 
 const buildCalendar = () => {
-  const calendar = new VCALENDAR();
+  const calendar = new ICS.VCALENDAR();
 
-  cal.addProp("VERSION", CALENDAR.VERSION);
-  cal.addProp("PRODID", CALENDAR.PRODID);
+  calendar.addProp("VERSION", CALENDAR.VERSION);
+  calendar.addProp("PRODID", CALENDAR.PRODID);
 
   return calendar;
 };
