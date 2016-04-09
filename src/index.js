@@ -1,8 +1,8 @@
 import ICS from 'ics-js';
 import {CALENDAR} from 'constants';
-import {shifts} from 'helpers';
 import {
   buildEvent,
+  getShifts,
   validateLocation
 } from 'actions';
 
@@ -13,6 +13,8 @@ try {
 
   calendar.addProp('VERSION', CALENDAR.VERSION);
   calendar.addProp('PRODID', CALENDAR.PRODID);
+
+  const shifts = getShifts();
 
   shifts.forEach((shift) => {
     calendar.addComponent(buildEvent(shift));
