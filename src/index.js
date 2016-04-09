@@ -2,7 +2,6 @@ import ICS from 'ics-js';
 import {CALENDAR} from 'constants';
 import {shifts} from 'helpers';
 import {
-  buildCalendar,
   buildEvent,
   validateLocation
 } from 'actions';
@@ -10,20 +9,25 @@ import {
 try {
   validateLocation();
 
-  const calendar = buildCalendar();
+  const calendar = new ICS.VCALENDAR();
+
+  calendar.addProp('VERSION', CALENDAR.VERSION);
+  calendar.addProp('PRODID', CALENDAR.PRODID);
 
   shifts.forEach((shift) => {
     calendar.addComponent(buildEvent(shift));
   });
 
   calendar.toBase64()
-    .then(result => window.location = result);
-} catch (e) {
-  console.error(e);
+    .then((result) => {
+      window.location = result;
+    });
+} catch (error) {
+  console.error(error); // eslint-disable-line no-console
 
-  if (e instanceof URIError) {
-    alert("Please run this script on MyPage Schedule.");
+  if (error instanceof URIError) {
+    alert('Please run this script on MyPage Schedule.'); // eslint-disable-line no-alert
   } else {
-    alert("An error occured while parsing your schedule.");
+    alert('An error occured while parsing your schedule.'); // eslint-disable-line no-alert
   }
 }

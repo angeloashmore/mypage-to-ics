@@ -9,16 +9,20 @@ export default class Shift {
     'Friday'
   ];
 
-  constructor(date, day, startTime, endTime) {
+  constructor (date, day, startTime, endTime) {
+    let end;
+
     const daysToAdd = Shift.days.indexOf(day);
+    const startDate = new Date(date + ' ' + Shift.timeFormatter(startTime));
+    const endDate = new Date(date + ' ' + Shift.timeFormatter(endTime));
 
-    const startDate = new Date(`${date} ${Shift._timeFormatter(startTime)}`);
-    let start = Shift._addDays(startDate, daysToAdd);
+    const start = Shift.addDays(startDate, daysToAdd);
 
-    const endDate = new Date(`${date} ${Shift._timeFormatter(endTime)}`);
-    let end = Shift._addDays(endDate, daysToAdd);
+    end = Shift.addDays(endDate, daysToAdd);
 
-    if (end < start) end = Shift._addDays(end, 1);
+    if (end < start) {
+      end = Shift.addDays(end, 1);
+    }
 
     this.start = start;
     this.end = end;
@@ -26,11 +30,11 @@ export default class Shift {
     this.endTimeRaw = endTime;
   }
 
-  static _timeFormatter(time) {
-    return `${time.slice(0, -2)} ${time.slice(-2)}`;
+  static timeFormatter (time) {
+    return time.slice(0, -2) + ' ' + time.slice(-2);
   }
 
-  static _addDays(date, qty) {
+  static addDays (date, qty) {
     return new Date(date.getTime() + qty * 86400000);
   }
 }

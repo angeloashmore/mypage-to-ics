@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/angeloashmore/mypage-to-ics#readme",
   "dependencies": {
-    "ics-js": "file:../ics-js"
+    "ics-js": "^0.8.8"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",
@@ -38,6 +38,7 @@
     "webpack": "^1.12.14"
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "extends": "eslint-config-canonical",
     "rules": {
       "indent": [
