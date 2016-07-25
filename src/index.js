@@ -58,5 +58,6 @@ if (!validLocation(window.location.href)) {
     window.location = base64Data
   } catch (error) {
     window.alert('An error occured while parsing your schedule.')
+    console.error(error)
   }
 }
