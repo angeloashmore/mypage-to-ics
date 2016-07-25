@@ -1,6 +1,6 @@
-import values from 'core-js/library/fn/object/values'
-import flatMap from 'lodash.flatmap'
 import { Component, Property } from 'immutable-ics'
+import values from 'lodash.values'
+import flatMap from 'lodash.flatmap'
 import stringHash from 'string-hash'
 
 const PRODID = 'Angelo Ashmore'
