@@ -1,9 +1,10 @@
-var webpack = require('webpack')
+const webpack = require('webpack')
+const path = require('path')
 
 module.exports = {
   devtool: 'source-map',
 
-  entry: './src/index.js',
+  entry: path.join(__dirname, 'src', 'index.js'),
 
   output: {
     path: 'dist',
@@ -14,7 +15,10 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: [
+          path.join(__dirname, 'src'),
+          path.join(__dirname, 'node_modules', 'immutable-ics')
+        ],
         loader: 'babel'
       }
     ]
