@@ -10,11 +10,6 @@ module.exports = {
     filename: 'mypage-to-ics.js'
   },
 
-  resolve: {
-    modulesDirectories: ['node_modules', './src'],
-    extensions: ['', '.js']
-  },
-
   module: {
     loaders: [
       {
