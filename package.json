@@ -44,6 +44,7 @@
     "parser": "babel-eslint"
   },
   "dependencies": {
+    "core-js": "^2.4.1",
     "immutable-ics": "^0.2.0",
     "simple-guid": "0.0.1"
   }

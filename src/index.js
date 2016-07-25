@@ -1,3 +1,4 @@
+import entries from 'core-js/library/fn/object/entries'
 import { Component, Property } from 'immutable-ics'
 import guid from 'simple-guid'
 
@@ -20,7 +21,7 @@ const buildCalendar = (schData) => new Component({
     new Property({ name: 'VERSION', value: 2 }),
     new Property({ name: 'PRODID', value: 'Angelo Ashmore' })
   ],
-  components: Object.entries(schData).map(([date, data]) => (
+  components: entries(schData).map(([date, data]) => (
     new Component({
       name: 'VEVENT',
       properties: [
