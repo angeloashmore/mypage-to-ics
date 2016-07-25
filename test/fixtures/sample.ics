@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:Angelo Ashmore
+PRODID:angeloashmore/mypage-to-ics
 BEGIN:VEVENT
 UID:4117863330
 SUMMARY:Store Admin

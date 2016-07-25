@@ -1,9 +1,9 @@
 import { Component, Property } from 'immutable-ics'
 import values from 'lodash.values'
 import flatMap from 'lodash.flatmap'
-import stringHash from 'string-hash'
+import guid from 'simple-guid'
 
-const PRODID = 'Angelo Ashmore'
+const PRODID = 'angeloashmore/mypage-to-ics'
 
 const buildAlarm = (startTime, trigger) => new Component({
   name: 'VALARM',
@@ -24,14 +24,13 @@ const buildEvent = (segment, index) => {
     startTime
   } = segment
 
-  const uid = stringHash(startDate + index)
   const start = new Date(`${startDate} ${startTime}`)
   const end = new Date(`${endDate} ${endTime}`)
 
   let event = new Component({
     name: 'VEVENT',
     properties: [
-      new Property({ name: 'UID', value: uid }),
+      new Property({ name: 'UID', value: guid() }),
       new Property({ name: 'SUMMARY', value: name || type }),
       new Property({ name: 'LOCATION', value: 'Apple Store' }),
       new Property({ name: 'DTSTAMP', value: start }),

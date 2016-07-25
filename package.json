@@ -33,6 +33,12 @@
     "standard": "^6.0.8",
     "webpack": "^1.13.1"
   },
+  "dependencies": {
+    "immutable-ics": "^0.2.2",
+    "lodash.flatmap": "^4.3.0",
+    "lodash.values": "^4.1.0",
+    "simple-guid": "0.0.1"
+  },
   "babel": {
     "presets": [
       "es2015"
@@ -44,11 +50,5 @@
       "bookmarklet.js"
     ],
     "parser": "babel-eslint"
-  },
-  "dependencies": {
-    "immutable-ics": "^0.2.2",
-    "lodash.flatmap": "^4.3.0",
-    "lodash.values": "^4.1.0",
-    "string-hash": "^1.1.0"
   }
 }

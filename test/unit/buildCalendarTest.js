@@ -6,6 +6,8 @@ import buildCalendar from '../../src/buildCalendar'
 
 const fixturesPath = path.join(__dirname, '..', 'fixtures')
 
+const removeUIDs = (string) => string.replace(/UID:[0-9A-Z-]*/g, 'UID:')
+
 describe('buildCalendar', () => {
   it('should return valid iCalendar data from sample schedule data', () => {
     const schedulePath = path.join(fixturesPath, 'sample.json')
@@ -16,6 +18,9 @@ describe('buildCalendar', () => {
 
     const ics = readFileSync(icsPath, 'utf8')
 
-    assert.equal(calendar.toString(), ics)
+    assert.equal(
+      removeUIDs(calendar.toString()),
+      removeUIDs(ics)
+    )
   })
 })
