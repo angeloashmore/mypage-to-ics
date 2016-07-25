@@ -22,21 +22,20 @@ const buildCalendar = (schData) => new Component({
     new Property({ name: 'PRODID', value: 'Angelo Ashmore' })
   ],
   components: entries(schData).map(([date, data]) => {
-    console.log(date, data)
     return new Component({
       name: 'VEVENT',
       properties: [
         new Property({ name: 'UID', value: guid() }),
         new Property({ name: 'DTSTAMP', value: new Date() }),
-        new Property({ name: 'SUMMARY', value: `You work at ${data.startTime}` }),
+        new Property({ name: 'SUMMARY', value: `You work at ${data[0].startTime}` }),
         new Property({ name: 'LOCATION', value: 'Apple Store' }),
         new Property({
           name: 'DTSTART',
-          value: new Date(`${data.startDate} ${data.startTime}`)
+          value: new Date(`${data[0].startDate} ${data[0].startTime}`)
         }),
         new Property({
           name: 'DTEND',
-          value: new Date(`${data.endDate} ${data.endTime}`)
+          value: new Date(`${data[data.length - 1].endDate} ${data[data.length - 1].endTime}`)
         })
       ],
       components: [

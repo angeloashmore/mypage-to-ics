@@ -38,7 +38,7 @@
   },
   "standard": {
     "ignore": [
-      "/build/",
+      "/dist/",
       "bookmarklet.js"
     ],
     "parser": "babel-eslint"
