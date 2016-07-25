@@ -2,7 +2,7 @@ import { Component, Property } from 'immutable-ics'
 import guid from 'simple-guid'
 
 const validLocation = (href) => (
-  href.match(/$https:\/\/mypage.apple.com\/myPage\/myTime.*/)
+  href.match(/^https:\/\/mypage.apple.com\/myPage\/myTime.*/)
 )
 
 const buildAlarm = (trigger) => new Component({
