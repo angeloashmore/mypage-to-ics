@@ -15,10 +15,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        include: [
-          path.join(__dirname, 'src'),
-          path.join(__dirname, 'node_modules', 'immutable-ics')
-        ],
+        include: path.join(__dirname, 'src'),
         loader: 'babel'
       }
     ]

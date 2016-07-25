@@ -1,52 +1,8 @@
-import entries from 'core-js/library/fn/object/entries'
-import { Component, Property } from 'immutable-ics'
-import guid from 'simple-guid'
+import buildCalendar from './buildCalendar'
 
-const validLocation = (href) => (
-  href.match(/^https:\/\/mypage.apple.com\/myPage\/myTime.*/)
-)
+const hrefRegExp = /^https:\/\/mypage.apple.com\/myPage\/myTime.*/
 
-const buildAlarm = (trigger) => new Component({
-  name: 'VALARM',
-  properties: [
-    new Property({ name: 'ACTION', value: 'DISPLAY' }),
-    new Property({ name: 'TRIGGER', value: trigger }),
-    new Property({ name: 'DESCRIPTION', value: 'Event Reminder' })
-  ]
-})
-
-const buildCalendar = (schData) => new Component({
-  name: 'VCALENDAR',
-  properties: [
-    new Property({ name: 'VERSION', value: 2 }),
-    new Property({ name: 'PRODID', value: 'Angelo Ashmore' })
-  ],
-  components: entries(schData).map(([date, data]) => {
-    return new Component({
-      name: 'VEVENT',
-      properties: [
-        new Property({ name: 'UID', value: guid() }),
-        new Property({ name: 'DTSTAMP', value: new Date() }),
-        new Property({ name: 'SUMMARY', value: `You work at ${data[0].startTime}` }),
-        new Property({ name: 'LOCATION', value: 'Apple Store' }),
-        new Property({
-          name: 'DTSTART',
-          value: new Date(`${data[0].startDate} ${data[0].startTime}`)
-        }),
-        new Property({
-          name: 'DTEND',
-          value: new Date(`${data[data.length - 1].endDate} ${data[data.length - 1].endTime}`)
-        })
-      ],
-      components: [
-        buildAlarm('-P1D'),
-        buildAlarm('-PT12H')
-      ]
-    })
-  })
-})
-
-if (!validLocation(window.location.href)) {
+if (!window.location.href.match(hrefRegExp)) {
   window.alert('Please run this script on myPage Time Overview.')
 } else {
   try {
