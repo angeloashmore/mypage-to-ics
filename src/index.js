@@ -21,8 +21,9 @@ const buildCalendar = (schData) => new Component({
     new Property({ name: 'VERSION', value: 2 }),
     new Property({ name: 'PRODID', value: 'Angelo Ashmore' })
   ],
-  components: entries(schData).map(([date, data]) => (
-    new Component({
+  components: entries(schData).map(([date, data]) => {
+    console.log(date, data)
+    return new Component({
       name: 'VEVENT',
       properties: [
         new Property({ name: 'UID', value: guid() }),
@@ -43,7 +44,7 @@ const buildCalendar = (schData) => new Component({
         buildAlarm('-PT12H')
       ]
     })
-  ))
+  })
 })
 
 if (!validLocation(window.location.href)) {
