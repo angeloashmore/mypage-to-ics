@@ -56,7 +56,7 @@ if (!validLocation(window.location.href)) {
     const calendar = buildCalendar(schData)
     const base64Data = window.btoa(calendar.toString())
 
-    window.location = base64Data
+    window.location = `data:text/calendar;base64,${base64Data}`
   } catch (error) {
     window.alert('An error occured while parsing your schedule.')
     console.error(error)
